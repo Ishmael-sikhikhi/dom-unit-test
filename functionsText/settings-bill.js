@@ -3,6 +3,8 @@ function BillWithSethings() {
     var theSmsCost = 0;
     var theWarningLevel = 0;
     var theCriticalLevel = 0;
+    var callCostTotal = 0;
+    var smsCostTotal = 0;
     function setCallCost(callCost) {
         theCallCost = callCost;
     }
@@ -15,10 +17,10 @@ function BillWithSethings() {
     function getSmsCost() {
         return theSmsCost;
     }
-    function setWartingLevel(warningLevel) {
+    function setWarningLevel(warningLevel) {
         theWarningLevel = warningLevel;
     }
-    function getWartingLevel() {
+    function getWarningLevel() {
         return theWarningLevel;
     }
     function setCriticalLevel(criticalLevel) {
@@ -27,30 +29,52 @@ function BillWithSethings() {
     function getCriticalLevel() {
         return theCriticalLevel;
     }
+    function hasReachedCriticalLevel(){
+        return getTotalCost() >= getCriticalLevel();
+    }
     function makeCall(){
-
+        if(!hasReachedCriticalLevel()){
+            callCostTotal +=theCallCost;
+        }
     }
     function getTotalCost(){
-        return 6.75
+        return callCostTotal +smsCostTotal;
+    }
+    function sendSms(){
+        if(!hasReachedCriticalLevel()){
+            smsCostTotal += theSmsCost;
+        }
     }
     function getTotalCallCost(){
-        return 6.75
+        return callCostTotal; 
     }
     function getTotalSmsCost(){
-        return 0
+        return smsCostTotal;
     }
+    function totalClassName(){
+        if (hasReachedCriticalLevel()){
+            return 'critical';
+        }
+        else if (getTotalCost() >= getWarningLevel()){
+            return 'warning';
+        }
+    }
+   
     return {
         setCallCost,
         getCallCost,
         setSmsCost,
         getSmsCost,
-        setWartingLevel,
-        getWartingLevel,
+        setWarningLevel,
+        getWarningLevel,
         setCriticalLevel,
         getCriticalLevel,
         makeCall,
         getTotalCost,
         getTotalCallCost,
-        getTotalSmsCost
+        getTotalSmsCost,
+        sendSms,
+        totalClassName,
+        hasReachedCriticalLevel
     }
 }
