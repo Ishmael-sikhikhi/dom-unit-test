@@ -47,6 +47,7 @@ describe('Use values ', function () {
         let settingsBill = BillWithSethings();
         settingsBill.setCallCost(2.25);
         settingsBill.setSmsCost(0.75);
+        settingsBill.setWarningLevel(5)
         settingsBill.setCriticalLevel(10);
         settingsBill.makeCall();
         settingsBill.makeCall();
@@ -62,6 +63,7 @@ describe('Use values ', function () {
         let settingsBill = BillWithSethings();
         settingsBill.setCallCost(1.35);
         settingsBill.setSmsCost(0.85);
+        settingsBill.setWarningLevel(5)
         settingsBill.setCriticalLevel(10);
         settingsBill.sendSms();
         settingsBill.sendSms();        
@@ -77,6 +79,7 @@ describe('Use values ', function () {
         let settingsBill = BillWithSethings();
         settingsBill.setCallCost(1.35);
         settingsBill.setSmsCost(0.75);
+        settingsBill.setWarningLevel(5)
         settingsBill.setCriticalLevel(10);
         settingsBill.makeCall();
         settingsBill.makeCall();        
@@ -92,6 +95,7 @@ describe('Use values ', function () {
         let settingsBill = BillWithSethings();
         settingsBill.setCallCost(1.35);
         settingsBill.setSmsCost(0.85);
+        settingsBill.setWarningLevel(5)
         settingsBill.setCriticalLevel(10);
         settingsBill.sendSms();
         settingsBill.sendSms(); 
